@@ -151,8 +151,8 @@ int homekit_storage_reset_pairing_data() {
     byte blank[sizeof(pairing_data_t) * MAX_PAIRINGS];
     bzero(blank,sizeof(blank));
 
-    INFO("Formatting HomeKit storage at 0x%x", PAIRINGS_OFFSET);
-    if (!spiflash_write(PAIRINGS_OFFSET, blank, sizeof(blank))) {
+    INFO("Formatting HomeKit storage at 0x%x", PAIRINGS_ADDR);
+    if (!spiflash_write(PAIRINGS_ADDR, blank, sizeof(blank))) {
         ERROR("Failed to erase HomeKit pairing storage");
         return -1; // Fail case
     }
